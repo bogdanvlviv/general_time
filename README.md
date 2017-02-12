@@ -154,6 +154,10 @@ Time.new(2017, 2, 10, 10, 10, 10).years_between(Time.new(2008, 2, 10, 10, 10, 10
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/bogdanvlviv/general_time. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
+## Code Status
+
+[![travis-ci](https://api.travis-ci.org/bogdanvlviv/general_time.svg?branch=master)](https://travis-ci.org/bogdanvlviv/general_time)
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
