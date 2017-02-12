@@ -24,6 +24,7 @@ Formula: `((date2.yday - date1.yday) + 365 * (date2.year - date1.year)).abs`
 
 ```ruby
 require "date"
+require "general_time"
 
 Date.new(2017, 2, 10).days_between(Date.new(2017, 2, 10)) # => 0
 
@@ -39,6 +40,8 @@ Date.new(2017, 2, 10).days_between(Date.new(2016, 2, 10)) # => 365
 ```
 
 ```ruby
+require "general_time"
+
 Time.new(2017, 2, 10, 10, 10, 10).days_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 0
 
 Time.new(2017, 2, 10, 9, 10, 10).days_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 0
@@ -58,6 +61,7 @@ Formula: `((date2.cweek - date1.cweek) + 52 * (date2.year - date1.year)).abs`
 
 ```ruby
 require "date"
+require "general_time"
 
 Date.new(2017, 2, 10).weeks_between(Date.new(2017, 2, 10)) # => 0
 
@@ -73,6 +77,8 @@ Date.new(2017, 2, 10).weeks_between(Date.new(2016, 2, 10)) # => 52
 ```
 
 ```ruby
+require "general_time"
+
 Time.new(2017, 2, 10, 10, 10, 10).weeks_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 0
 
 Time.new(2017, 2, 10, 9, 10, 10).weeks_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 0
@@ -92,6 +98,7 @@ Formula: `((date2.month - date1.month) + 12 * (date2.year - date1.year)).abs`
 
 ```ruby
 require "date"
+require "general_time"
 
 Date.new(2017, 2, 10).months_between(Date.new(2017, 2, 10)) # => 0
 
@@ -107,6 +114,8 @@ Date.new(2017, 2, 10).months_between(Date.new(2016, 2, 10)) # => 12
 ```
 
 ```ruby
+require "general_time"
+
 Time.new(2017, 2, 10, 10, 10, 10).months_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 0
 
 Time.new(2017, 2, 9, 10, 10, 10).months_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 0
@@ -126,6 +135,7 @@ Formula: `(date2.year - date1.year).abs`
 
 ```ruby
 require "date"
+require "general_time"
 
 Date.new(2017, 2, 10).years_between(Date.new(2017, 2, 10)) # => 0
 
@@ -139,6 +149,8 @@ Date.new(2017, 2, 10).years_between(Date.new(2008, 2, 10)) # => 9
 ```
 
 ```ruby
+require "general_time"
+
 Time.new(2017, 2, 10, 10, 10, 10).years_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 0
 
 Time.new(2017, 1, 10, 10, 10, 10).years_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 0
