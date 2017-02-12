@@ -1,9 +1,5 @@
 # GeneralTime
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/general_time`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -22,18 +18,141 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### #days_between
 
-## Development
+Formula: `((date2.yday - date1.yday) + 365 * (date2.year - date1.year)).abs`
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+```ruby
+require "date"
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Date.new(2017, 2, 10).days_between(Date.new(2017, 2, 10)) # => 0
+
+Date.new(2017, 2, 10).days_between(Date.new(2017, 2, 10)) # => 0
+Date.new(2017, 2, 10).days_between(Date.new(2017, 2, 10)) # => 0
+
+Date.new(2017, 2, 9).days_between(Date.new(2017, 2, 10)) # => 1
+Date.new(2017, 2, 10).days_between(Date.new(2017, 2, 9)) # => 1
+Date.new(2017, 2, 1).days_between(Date.new(2017, 2, 10)) # => 9
+Date.new(2017, 2, 10).days_between(Date.new(2017, 2, 1)) # => 9
+Date.new(2016, 2, 10).days_between(Date.new(2017, 2, 10)) # => 365
+Date.new(2017, 2, 10).days_between(Date.new(2016, 2, 10)) # => 365
+```
+
+```ruby
+Time.new(2017, 2, 10, 10, 10, 10).days_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 0
+
+Time.new(2017, 2, 10, 9, 10, 10).days_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 0
+Time.new(2017, 2, 10, 10, 10, 10).days_between(Time.new(2017, 2, 10, 9, 10, 10)) # => 0
+
+Time.new(2017, 2, 9, 10, 10, 10).days_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 1
+Time.new(2017, 2, 10, 10, 10, 10).days_between(Time.new(2017, 2, 9, 10, 10, 10)) # => 1
+Time.new(2017, 2, 1, 10, 10, 10).days_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 9
+Time.new(2017, 2, 10, 10, 10, 10).days_between(Time.new(2017, 2, 1, 10, 10, 10)) # => 9
+Time.new(2016, 2, 10, 10, 10, 10).days_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 365
+Time.new(2017, 2, 10, 10, 10, 10).days_between(Time.new(2016, 2, 10, 10, 10, 10)) # => 365
+```
+
+### #weeks_between
+
+Formula: `((date2.cweek - date1.cweek) + 52 * (date2.year - date1.year)).abs`
+
+```ruby
+require "date"
+
+Date.new(2017, 2, 10).weeks_between(Date.new(2017, 2, 10)) # => 0
+
+Date.new(2017, 2, 10).weeks_between(Date.new(2017, 2, 10)) # => 0
+Date.new(2017, 2, 10).weeks_between(Date.new(2017, 2, 10)) # => 0
+
+Date.new(2017, 2, 3).weeks_between(Date.new(2017, 2, 10)) # => 1
+Date.new(2017, 2, 10).weeks_between(Date.new(2017, 2, 3)) # => 1
+Date.new(2016, 12, 9).weeks_between(Date.new(2017, 2, 10)) # => 9
+Date.new(2017, 2, 10).weeks_between(Date.new(2016, 12, 9)) # => 9
+Date.new(2016, 2, 10).weeks_between(Date.new(2017, 2, 10)) # => 52
+Date.new(2017, 2, 10).weeks_between(Date.new(2016, 2, 10)) # => 52
+```
+
+```ruby
+Time.new(2017, 2, 10, 10, 10, 10).weeks_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 0
+
+Time.new(2017, 2, 10, 9, 10, 10).weeks_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 0
+Time.new(2017, 2, 10, 10, 10, 10).weeks_between(Time.new(2017, 2, 10, 9, 10, 10)) # => 0
+
+Time.new(2017, 2, 3, 10, 10, 10).weeks_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 1
+Time.new(2017, 2, 10, 10, 10, 10).weeks_between(Time.new(2017, 2, 3, 10, 10, 10)) # => 1
+Time.new(2016, 12, 9, 10, 10, 10).weeks_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 9
+Time.new(2017, 2, 10, 10, 10, 10).weeks_between(Time.new(2016, 12, 9, 10, 10, 10)) # => 9
+Time.new(2016, 2, 10, 10, 10, 10).weeks_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 52
+Time.new(2017, 2, 10, 10, 10, 10).weeks_between(Time.new(2016, 2, 10, 10, 10, 10)) # => 52
+```
+
+### #months_between
+
+Formula: `((date2.month - date1.month) + 12 * (date2.year - date1.year)).abs`
+
+```ruby
+require "date"
+
+Date.new(2017, 2, 10).months_between(Date.new(2017, 2, 10)) # => 0
+
+Date.new(2017, 2, 9).months_between(Date.new(2017, 2, 10)) # => 0
+Date.new(2017, 2, 10).months_between(Date.new(2017, 2, 9)) # => 0
+
+Date.new(2017, 1, 10).months_between(Date.new(2017, 2, 10)) # => 1
+Date.new(2017, 2, 10).months_between(Date.new(2017, 1, 10)) # => 1
+Date.new(2016, 5, 10).months_between(Date.new(2017, 2, 10)) # => 9
+Date.new(2017, 2, 10).months_between(Date.new(2016, 5, 1)) # => 9
+Date.new(2016, 2, 10).months_between(Date.new(2017, 2, 10)) # => 12
+Date.new(2017, 2, 10).months_between(Date.new(2016, 2, 10)) # => 12
+```
+
+```ruby
+Time.new(2017, 2, 10, 10, 10, 10).months_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 0
+
+Time.new(2017, 2, 9, 10, 10, 10).months_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 0
+Time.new(2017, 2, 10, 10, 10, 10).months_between(Time.new(2017, 2, 9, 10, 10, 10)) # => 0
+
+Time.new(2017, 1, 10, 10, 10, 10).months_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 1
+Time.new(2017, 2, 10, 10, 10, 10).months_between(Time.new(2017, 1, 10, 10, 10, 10)) # => 1
+Time.new(2016, 5, 10, 10, 10, 10).months_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 9
+Time.new(2017, 2, 10, 10, 10, 10).months_between(Time.new(2016, 5, 1, 10, 10, 10)) # => 9
+Time.new(2016, 2, 10, 10, 10, 10).months_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 12
+Time.new(2017, 2, 10, 10, 10, 10).months_between(Time.new(2016, 2, 10, 10, 10, 10)) # => 12
+```
+
+### #years_between
+
+Formula: `(date2.year - date1.year).abs`
+
+```ruby
+require "date"
+
+Date.new(2017, 2, 10).years_between(Date.new(2017, 2, 10)) # => 0
+
+Date.new(2017, 1, 10).years_between(Date.new(2017, 2, 10)) # => 0
+Date.new(2017, 2, 10).years_between(Date.new(2017, 1, 10)) # => 0
+
+Date.new(2016, 2, 10).years_between(Date.new(2017, 2, 10)) # => 1
+Date.new(2017, 2, 10).years_between(Date.new(2016, 2, 10)) # => 1
+Date.new(2008, 2, 10).years_between(Date.new(2017, 2, 10)) # => 9
+Date.new(2017, 2, 10).years_between(Date.new(2008, 2, 10)) # => 9
+```
+
+```ruby
+Time.new(2017, 2, 10, 10, 10, 10).years_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 0
+
+Time.new(2017, 1, 10, 10, 10, 10).years_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 0
+Time.new(2017, 2, 10, 10, 10, 10).years_between(Time.new(2017, 1, 10, 10, 10, 10)) # => 0
+
+Time.new(2016, 2, 10, 10, 10, 10).years_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 1
+Time.new(2017, 2, 10, 10, 10, 10).years_between(Time.new(2016, 2, 10, 10, 10, 10)) # => 1
+Time.new(2008, 2, 10, 10, 10, 10).years_between(Time.new(2017, 2, 10, 10, 10, 10)) # => 9
+Time.new(2017, 2, 10, 10, 10, 10).years_between(Time.new(2008, 2, 10, 10, 10, 10)) # => 9
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/general_time. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/bogdanvlviv/general_time. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
