@@ -1,4 +1,4 @@
-# GeneralTime
+# general_time
 
 ## Installation
 
