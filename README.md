@@ -28,9 +28,6 @@ require "general_time"
 
 Date.new(2017, 2, 10).days_between(Date.new(2017, 2, 10)) # => 0
 
-Date.new(2017, 2, 10).days_between(Date.new(2017, 2, 10)) # => 0
-Date.new(2017, 2, 10).days_between(Date.new(2017, 2, 10)) # => 0
-
 Date.new(2017, 2, 9).days_between(Date.new(2017, 2, 10)) # => 1
 Date.new(2017, 2, 10).days_between(Date.new(2017, 2, 9)) # => 1
 Date.new(2017, 2, 1).days_between(Date.new(2017, 2, 10)) # => 9
@@ -63,9 +60,6 @@ Formula: `((date2.cweek - date1.cweek) + 52 * (date2.year - date1.year)).abs`
 require "date"
 require "general_time"
 
-Date.new(2017, 2, 10).weeks_between(Date.new(2017, 2, 10)) # => 0
-
-Date.new(2017, 2, 10).weeks_between(Date.new(2017, 2, 10)) # => 0
 Date.new(2017, 2, 10).weeks_between(Date.new(2017, 2, 10)) # => 0
 
 Date.new(2017, 2, 3).weeks_between(Date.new(2017, 2, 10)) # => 1
@@ -173,4 +167,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/bogdan
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
